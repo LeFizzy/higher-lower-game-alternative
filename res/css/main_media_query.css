@@ -1,0 +1,66 @@
+@media screen and (max-width: 760px) {
+	.stage--game{
+		display:flex;
+		flex-direction:column;
+		height:50%;
+	}
+	.div--dockGame2_cross, .div--dockGame1_cross {
+		width: 100%;
+		float: none;
+	}
+	.div--navigationbar_cross{
+		display:none;
+	}
+	.div--dockGame2_cross {
+		order:1;
+	}
+	.div--dockGame1_cross{
+		order:2;
+	}
+	.div--dockGame2_cross {
+		margin-top:0;
+	}
+	.div--dockGame1_cross h1{
+		font-size:24px;
+	}
+	.div--dockGame2_cross h1{
+		font-size:24px;
+	}
+	.div--dockGame1_cross p{
+		font-size:15px;
+	}
+	.div--dockGame2_cross p{
+		font-size:15px;
+	}
+	.div--dockGame2_cross h2{
+		font-size:24px;
+	}
+	.div--currentGamescore_cross, #btn--mobileView_mobile{
+		position:absolute;
+	}
+	.div--currentGamescore_cross{
+		color:white;
+ 		right: 5px;
+		top:0px;
+		margin:0;
+		font-size:15px;
+	}
+	.div--hoverable_desktop{
+		display:none;
+	}
+	.div--socialdock_desktop{
+		display:none;
+	}
+	.div--currentGamehiscore_desktop{
+		display:none;
+	}
+	#id--ThanSmall {
+		display:none;
+	}
+}
+
+@media screen and (min-width: 760px){
+	#id--navbar_e_mobileView{
+		display:none;
+	}
+}

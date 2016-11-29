@@ -1,0 +1,34 @@
+/*
+	These images used to show example of my work.
+	Feel free to report copyright-problems to me.
+
+	2016, LeFizzy. (https://github.com/LeFizzy)
+*/
+
+donald_trump.jpg {
+		size:	226 KB
+		width:	1500 px
+		height: 2000 px
+		source: wikimedia.org
+}
+
+flowers.jpg {
+		size:	104 KB
+		width:	958 px
+		height: 639 px
+		source: freestockphotos.biz
+}
+
+hillary_clinton.jpg {
+		size:	47,4 KB
+		width:  480 px
+		height: 600 px
+		source: wikimedia.org
+}
+
+toys.jpg {
+		size:	299 KB
+		width: 1460 px
+		height: 1024 px
+		source: wikimedia.org
+}

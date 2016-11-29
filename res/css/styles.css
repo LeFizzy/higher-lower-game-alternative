@@ -1,0 +1,164 @@
+html,body{
+    background-color:#333;
+	margin: 0; 
+	height: 100%; 	
+	overflow: hidden;
+}
+.div--dockGame1_cross,
+.div--dockGame2_cross {
+	display: inline-block;
+  	width: 50%;
+	float:right;
+	min-height:100%;
+  	background-position: center center;
+  	background-size: cover;
+  	background-repeat: n /one;
+}
+.div--dockGame1_cross h1{
+	text-align:center;
+	color:white;
+	font-family:"Times New Roman", Times, serif;
+	margin:0px;
+	margin-top:5px;
+}
+.div--dockGame2_cross h1{
+	text-align:center;
+	color:white;
+	font-family:"Times New Roman", Times, serif;
+	margin:0px;
+	margin-top:5px;
+}
+.div--dockGame1_cross p{
+	text-align:center;
+	color:white;
+	font-size:18px;
+	margin-top:3px;
+	margin-bottom:5px;
+}
+.div--dockGame2_cross p{
+	text-align:center;
+	color:white;
+	font-size:18px;	
+	margin-bottom:5px;
+	margin-top:0px;
+}
+.div--dockGame1_cross h3{
+	text-align:center;
+	color:white;
+	font-size:18px;
+	margin-top:3px;
+	margin-bottom:5px;
+}
+.div--dockGame2_cross h3{
+	text-align:center;
+	color:white;
+	font-size:18px;
+	margin-top:3px;
+	margin-bottom:5px;
+}
+/* right-container heading */
+.div--dockGame1_cross h2{
+	text-align:center;
+	color:#FFFB62;
+	font-size:60px;
+	margin:0px;
+	margin-bottom:4px;
+}
+/* Left-container heading */
+.div--dockGame2_cross h2{
+	text-align:center;
+	color:#FFFB62;
+	font-size:60px;
+	margin:0px;
+	margin-bottom:4px;
+}
+/* Align elements to center */
+.div--alignInformation_cross {
+    height: 100%;
+  	display:-webkit-flex;
+  	display:flex;
+  	-webkit-align-items: center;
+    align-items: center;
+  	-webkit-justify-content: center;
+    justify-content: center;
+}
+.div--currentGamescore_cross{
+	position:absolute;
+	color:white;
+	bottom: 20px;
+	margin:0;
+}
+.div--currentGamehiscore_desktop{
+	position:absolute;
+	color:white;
+	bottom: 20px;
+	margin:0;
+}
+.div--CurrentRImageSource{
+	position:absolute;
+	color:white;
+	bottom: 5px;
+	margin:0;
+}
+.div--CurrentLImageSource{
+	position:absolute;
+	color:white;
+	bottom: 5px;
+	margin:0;
+}
+.div--CurrentLImageSouce {
+	position:absolute;
+	color:white;
+	bottom:5px;
+	margin:0;
+}
+.splashLabels{
+	top:20%;
+	position:relative;
+	text-align:center;
+}
+.stageSplashAlign {
+	background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url("../images/max_res.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+	margin: 0; 
+	height: 100%;
+}
+.headingH1 {
+	clear:both;
+}
+.l_higher {
+	color:#4CAF50;
+	display:inline-block;
+}
+.r_gamez {
+	color:#ff4d4d;
+	display:inline-block;
+}
+.playedH2{
+	font-weight:bold;
+	text-align:center;
+	color:#fff;
+	margin-bottom:5px;
+}
+.paraP{
+	color:#fff;
+	text-align:center;
+	font-weight:bold;
+	margin-bottom:5px;
+}
+.mottoH2{
+	color:#FFFB62;
+	text-align:center;
+	margin-bottom:5px;
+}
+.submit-button{
+	margin: 0 auto;
+}
+.advertisement {
+	margin: 0 auto;
+	height:100px;
+	width:600px;
+}
