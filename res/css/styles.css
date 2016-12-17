@@ -4,6 +4,9 @@ html,body{
 	height: 100%; 	
 	overflow: hidden;
 }
+.stage--splashMain,.div--mobileView_mobile,.stage--game,.stage--gameover{
+  height:100%;
+}
 .div--dockGame1_cross,
 .div--dockGame2_cross {
 	display: inline-block;
@@ -13,20 +16,19 @@ html,body{
   	background-position: center center;
   	background-size: cover;
   	background-repeat: n /one;
+	display:flex;
+  	align-items:center;
+  	justify-content:center;
 }
 .div--dockGame1_cross h1{
 	text-align:center;
 	color:white;
 	font-family:"Times New Roman", Times, serif;
-	margin:0px;
-	margin-top:5px;
 }
 .div--dockGame2_cross h1{
 	text-align:center;
 	color:white;
 	font-family:"Times New Roman", Times, serif;
-	margin:0px;
-	margin-top:5px;
 }
 .div--dockGame1_cross p{
 	text-align:center;
