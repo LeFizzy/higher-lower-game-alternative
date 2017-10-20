@@ -1,0 +1,27 @@
+{
+  "name": "higher-lower-game-alternative",
+  "version": "1.0.0",
+  "description": "Higher-Lower Game alternative, built over Node.js",
+  "engines": {
+    "node": "6.11.2"
+  },
+  "keywords": [
+    "realtime",
+    "game"
+  ],
+  "main": "index.js",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/LeFizzy/higher-lower-game-alternative"
+  },
+  "dependencies": {
+    "express": "latest"
+  },
+  "contributors": [
+    {
+      "name": "Milan Zeisler",
+      "email": "zeislermilan@gmail.com"
+    }
+  ]
+}
