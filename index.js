@@ -1,15 +1,37 @@
-const express = require('express')
-    , http = require('http');
+const express = require('express');
+const app = express();
+const googleTrends = require('google-trends-api');
+const gameShuffle = require('./lib/randomizeElements.js');
+const gameData = require('./lib/objectProvider.json');
 
-var app = module.exports = express();
-var server = http.createServer(app);
-var port = process.env.port || 3000;
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('public'));
 
-server.listen( port, function() {
-    console.log('Server listening on port ' + port + '!');
+app.get('/', (req, res) => {
+    res.send('index.html');
 });
 
-app.get("/", function(req, res) {
-    res.render("index.html");
+app.get('/api/getgamedata', (req, res) => {
+    let shuffledData = gameShuffle(gameData);
+    res.send(shuffledData);
 });
+
+app.get('/api/getgamescore/:keyword', (req, res) => {
+    let keywordRequest = req.params.keyword;
+
+    console.log(keywordRequest);
+    let keywordScore = 0;
+
+    googleTrends.interestOverTime({
+        keyword: "aceofspades", 
+        startTime: new Date(Date.now() - (31556926 * 1000)),
+        granularTimeResolution: true,
+    })
+    .then(function(results){
+        console.log('These results are awesome', results);
+    })
+    .catch(function(err){
+        console.error('Oh no there was an error', err);
+    });
+});
+
+app.listen('8080', () => { console.log('Server started on 8080'); });
