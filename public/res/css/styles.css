@@ -115,9 +115,12 @@ html,body{
 	margin:0;
 }
 .splashLabels{
-	top:20%;
-	position:relative;
-	text-align:center;
+	display: flex;
+	height: 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
 }
 .stageSplashAlign {
 	background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url("../images/max_res.jpg") no-repeat center center fixed; 
@@ -138,6 +141,7 @@ html,body{
 .r_gamez {
 	color:#ff4d4d;
 	display:inline-block;
+	margin: 0;
 }
 .playedH2{
 	font-weight:bold;
