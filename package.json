@@ -16,8 +16,7 @@
     "url": "git://github.com/LeFizzy/higher-lower-game-alternative"
   },
   "dependencies": {
-    "express": "latest",
-    "google-trends-api": "^4.7.0"
+    "express": "latest"
   },
   "contributors": [
     {

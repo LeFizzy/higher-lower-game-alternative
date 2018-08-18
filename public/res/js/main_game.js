@@ -11,7 +11,11 @@
 * it was loaded for some reason. 
 */
 
-let gameData;
+let gameData,
+	gamePositionTracker = 0,
+	gamePositionTrackerLeft = 0,
+	gamePositionTrackerRight = 0,
+	gamePlayerScore = 0;
 
 $(document).ready(function() {
 	showStartScreenSplash();
@@ -23,6 +27,7 @@ const showStartScreenSplash = function () {
 };
 
 const showEndSplash = function () {
+	resetGameData();
 	$('.stage--game').hide();
 	$('.stage--splashMain').hide();
 	$('.stage--gameover').show();
@@ -30,7 +35,8 @@ const showEndSplash = function () {
 
 const showPlayGameSplash = function () {
 	gameData = requestAPIData();
-	console.log(gameData);
+	gamePositionTrackerLeft = gameData[gamePositionTracker];
+	gamePositionTrackerRight = gameData[gamePositionTracker + 1];
 
 	if(gameData) {
 		$('.stage--splashMain').hide();
@@ -45,17 +51,13 @@ const showPlayGameSplash = function () {
 			rightContainerImage = $('.div--dockGame1_cross'),
 			rightContainerScore = $('.div--dockGame1_cross h3');
 
-		let highGameScore = $('.div--currentGamehiscore_desktop'),
-			currentGameScore = $('.div--currentGamescore_cross');
+		leftContainerTitle.html(gameData[gamePositionTracker].keyword);
+		leftContainerScore.html(gameData[gamePositionTracker].searchVolume);
+		leftContainerImage.css("background", "linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('" + gameData[gamePositionTracker].link + "')");
 
-		leftContainerTitle.html(gameData[0].name);
-		leftContainerScore.html("312312");
-		leftContainerImage.css("background", "linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('" + gameData[0].url + "')");
-
-		rightContainerTitle.html(gameData[1].name);
-		rightContainerScore.html(gameData[1].name);
-		rightContainerImage.css("background", "linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('" + gameData[1].url + "')");
-		rightContainerScore.html("searches than " + gameData[0].name);
+		rightContainerTitle.html(gameData[gamePositionTracker + 1].keyword);
+		rightContainerImage.css("background", "linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('" + gameData[gamePositionTracker + 1].link + "')");
+		rightContainerScore.html("searches than " + gameData[gamePositionTracker].keyword);
 		animateDataScore();
 	}
 };
@@ -75,27 +77,60 @@ const animateDataScore = function () {
 };
 
 const compareQuestionScore = function (event_sender, sent_answer) {
+	let highGameScore = $('.div--currentGamehiscore_desktop h2'),
+			currentGameScore = $('.div--currentGamescore_cross h2');
+
 	if( sent_answer == "higher" ) {
-			if( firstGameScore[randomItemContainer1] >= secGameScore[randomItemContainer2] ){
-				//jq_slide();
-				global_score++;
-				current_score.innerHTML = "Score:" + global_score;
-				gen_next();
-			}
+		if( gamePositionTrackerRight.searchVolume >= gamePositionTrackerLeft.searchVolume ) {
+			gamePlayerScore = gamePlayerScore += 1;
+			gamePositionTracker = gamePositionTracker += 1;
+			gamePositionTrackerLeft = gameData[gamePositionTracker];
+			gamePositionTrackerRight = gameData[gamePositionTracker + 1];
+			currentGameScore = $('.div--currentGamescore_cross h2').html("Score:" + gamePlayerScore);
+			moveToNextQuestion();
+		}
 		else {
-			gameover();
+			showEndSplash();
 		}
 	}else if( sent_answer == "lower" ) {
-			if( firstGameScore[randomItemContainer1] <= secGameScore[randomItemContainer2] ){
-				//jq_slide();
-				global_score++;
-				current_score.innerHTML = "Score:" + global_score;
-				gen_next();
-			}
-			else {
-				gameover();
-			}
+		if( gamePositionTrackerRight.searchVolume <= gamePositionTrackerLeft.searchVolume ) {
+			gamePlayerScore = gamePlayerScore += 1;
+			gamePositionTracker = gamePositionTracker += 1;
+			gamePositionTrackerLeft = gameData[gamePositionTracker];
+			gamePositionTrackerRight = gameData[gamePositionTracker + 1];
+			currentGameScore = $('.div--currentGamescore_cross h2').html("Score:" + gamePlayerScore);
+			moveToNextQuestion();
+		}
+		else {
+			showEndSplash();
+		}
 	}
+};
+
+const moveToNextQuestion = function() {
+	let leftContainerTitle = $('.div--dockGame2_cross h1'),
+			leftContainerImage = $('.div--dockGame2_cross'),
+			leftContainerScore = $('.div--dockGame2_cross h2');
+
+	let rightContainerTitle = $('.div--dockGame1_cross h1'),
+		rightContainerImage = $('.div--dockGame1_cross'),
+		rightContainerScore = $('.div--dockGame1_cross h3');
+
+	leftContainerTitle.html(gameData[gamePositionTracker].keyword);
+	leftContainerScore.html(gameData[gamePositionTracker].searchVolume);
+	leftContainerImage.css("background", "linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('" + gameData[gamePositionTracker].link + "')");
+
+	rightContainerTitle.html(gameData[gamePositionTracker + 1].keyword);
+	rightContainerImage.css("background", "linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('" + gameData[gamePositionTracker + 1].link + "')");
+	rightContainerScore.html("searches than " + gameData[gamePositionTracker].keyword);
+	animateDataScore();
+};
+
+const resetGameData = function() {
+	gamePositionTracker = 0;
+	gamePositionTrackerLeft = 0;
+	gamePositionTrackerRight = 0;
+	gamePlayerScore = 0;
 };
 
 const requestAPIData = function() {

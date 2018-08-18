@@ -15,23 +15,4 @@ app.get('/api/getgamedata', (req, res) => {
     res.send(shuffledData);
 });
 
-app.get('/api/getgamescore/:keyword', (req, res) => {
-    let keywordRequest = req.params.keyword;
-
-    console.log(keywordRequest);
-    let keywordScore = 0;
-
-    googleTrends.interestOverTime({
-        keyword: "aceofspades", 
-        startTime: new Date(Date.now() - (31556926 * 1000)),
-        granularTimeResolution: true,
-    })
-    .then(function(results){
-        console.log('These results are awesome', results);
-    })
-    .catch(function(err){
-        console.error('Oh no there was an error', err);
-    });
-});
-
 app.listen('8080', () => { console.log('Server started on 8080'); });
