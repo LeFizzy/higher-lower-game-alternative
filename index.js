@@ -14,4 +14,6 @@ app.get('/api/getgamedata', (req, res) => {
     res.send(shuffledData);
 });
 
-app.listen('8080', () => { console.log('Server started on port 8080!'); });
+app.listen(process.env.PORT || 8080, () => { 
+    console.log('Server started on port 8080!'); 
+});
