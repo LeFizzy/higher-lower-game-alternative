@@ -5,6 +5,9 @@
   "engines": {
     "node": "6.11.2"
   },
+  "scripts": {
+    "start": "node index.js"
+  },
   "keywords": [
     "realtime",
     "game"
