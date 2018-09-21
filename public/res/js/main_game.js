@@ -27,6 +27,7 @@ const showStartScreenSplash = function () {
 };
 
 const showEndSplash = function () {
+	$('.div--endGameScore').html('You scored: ' + gamePlayerScore);
 	resetGameData();
 	$('.stage--game').hide();
 	$('.stage--splashMain').hide();
@@ -49,7 +50,8 @@ const showPlayGameSplash = function () {
 
 		let rightContainerTitle = $('.div--dockGame1_cross h1'),
 			rightContainerImage = $('.div--dockGame1_cross'),
-			rightContainerScore = $('.div--dockGame1_cross h3');
+			rightContainerScore = $('.div--dockGame1_cross h3'),
+			currentGameScore = $('.div--currentGamescore_cross h2');
 
 		leftContainerTitle.html(gameData[gamePositionTracker].keyword);
 		leftContainerScore.html(gameData[gamePositionTracker].searchVolume);
@@ -58,6 +60,7 @@ const showPlayGameSplash = function () {
 		rightContainerTitle.html(gameData[gamePositionTracker + 1].keyword);
 		rightContainerImage.css("background", "linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('" + gameData[gamePositionTracker + 1].link + "')");
 		rightContainerScore.html("searches than " + gameData[gamePositionTracker].keyword);
+		currentGameScore.html("Score:" + gamePlayerScore);
 		animateDataScore();
 	}
 };
@@ -82,24 +85,32 @@ const compareQuestionScore = function (event_sender, sent_answer) {
 
 	if( sent_answer == "higher" ) {
 		if( gamePositionTrackerRight.searchVolume >= gamePositionTrackerLeft.searchVolume ) {
-			gamePlayerScore = gamePlayerScore += 1;
-			gamePositionTracker = gamePositionTracker += 1;
-			gamePositionTrackerLeft = gameData[gamePositionTracker];
-			gamePositionTrackerRight = gameData[gamePositionTracker + 1];
-			currentGameScore = $('.div--currentGamescore_cross h2').html("Score:" + gamePlayerScore);
-			moveToNextQuestion();
+			if( gamePositionTracker +1 == gameData.length - 1 ) {
+				showEndSplash();
+			} else {
+				gamePlayerScore = gamePlayerScore += 1;
+				gamePositionTracker = gamePositionTracker += 1;
+				gamePositionTrackerLeft = gameData[gamePositionTracker];
+				gamePositionTrackerRight = gameData[gamePositionTracker + 1];
+				currentGameScore = $('.div--currentGamescore_cross h2').html("Score:" + gamePlayerScore);
+				moveToNextQuestion();
+			}
 		}
 		else {
 			showEndSplash();
 		}
-	}else if( sent_answer == "lower" ) {
+	} else if( sent_answer == "lower" ) {
 		if( gamePositionTrackerRight.searchVolume <= gamePositionTrackerLeft.searchVolume ) {
-			gamePlayerScore = gamePlayerScore += 1;
-			gamePositionTracker = gamePositionTracker += 1;
-			gamePositionTrackerLeft = gameData[gamePositionTracker];
-			gamePositionTrackerRight = gameData[gamePositionTracker + 1];
-			currentGameScore = $('.div--currentGamescore_cross h2').html("Score:" + gamePlayerScore);
-			moveToNextQuestion();
+			if( gamePositionTracker +1 == gameData.length - 1) {
+				showEndSplash();
+			} else {
+				gamePlayerScore = gamePlayerScore += 1;
+				gamePositionTracker = gamePositionTracker += 1;
+				gamePositionTrackerLeft = gameData[gamePositionTracker];
+				gamePositionTrackerRight = gameData[gamePositionTracker + 1];
+				currentGameScore = $('.div--currentGamescore_cross h2').html("Score:" + gamePlayerScore);
+				moveToNextQuestion();
+			}
 		}
 		else {
 			showEndSplash();
@@ -108,22 +119,22 @@ const compareQuestionScore = function (event_sender, sent_answer) {
 };
 
 const moveToNextQuestion = function() {
-	let leftContainerTitle = $('.div--dockGame2_cross h1'),
+		let leftContainerTitle = $('.div--dockGame2_cross h1'),
 			leftContainerImage = $('.div--dockGame2_cross'),
 			leftContainerScore = $('.div--dockGame2_cross h2');
 
-	let rightContainerTitle = $('.div--dockGame1_cross h1'),
-		rightContainerImage = $('.div--dockGame1_cross'),
-		rightContainerScore = $('.div--dockGame1_cross h3');
+		let rightContainerTitle = $('.div--dockGame1_cross h1'),
+			rightContainerImage = $('.div--dockGame1_cross'),
+			rightContainerScore = $('.div--dockGame1_cross h3');
 
-	leftContainerTitle.html(gameData[gamePositionTracker].keyword);
-	leftContainerScore.html(gameData[gamePositionTracker].searchVolume);
-	leftContainerImage.css("background", "linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('" + gameData[gamePositionTracker].link + "')");
+		leftContainerTitle.html(gameData[gamePositionTracker].keyword);
+		leftContainerScore.html(gameData[gamePositionTracker].searchVolume);
+		leftContainerImage.css("background", "linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('" + gameData[gamePositionTracker].link + "')");
 
-	rightContainerTitle.html(gameData[gamePositionTracker + 1].keyword);
-	rightContainerImage.css("background", "linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('" + gameData[gamePositionTracker + 1].link + "')");
-	rightContainerScore.html("searches than " + gameData[gamePositionTracker].keyword);
-	animateDataScore();
+		rightContainerTitle.html(gameData[gamePositionTracker + 1].keyword);
+		rightContainerImage.css("background", "linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('" + gameData[gamePositionTracker + 1].link + "')");
+		rightContainerScore.html("searches than " + gameData[gamePositionTracker].keyword);
+		animateDataScore();
 };
 
 const resetGameData = function() {

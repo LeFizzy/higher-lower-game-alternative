@@ -143,7 +143,7 @@ html,body{
 	display:inline-block;
 	margin: 0;
 }
-.playedH2{
+.playedH2, .div--endGameScore{
 	font-weight:bold;
 	text-align:center;
 	color:#fff;
