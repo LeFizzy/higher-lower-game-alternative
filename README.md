@@ -1,7 +1,5 @@
 ![alt tag](https://github.com/LeFizzy/higher-lower-game-alternative/blob/master/res/higher_lower_main.PNG)
 
-# LIVE Preview => http://s.codepen.io/LeFizzy/debug/rWqggX
-
 Which gets googled more? A javascript based alternative website to h*gherlowergame.com.
 
 A simple game, alternative to h*gherlowergame.com known from idea of this game.
